@@ -1,9 +1,3 @@
-<script type="text/javascript">
-  var clock = $('.my-clock').FlipClock(<%= @time_til_next_round%>, {
-    countdown: true,
-    clockFace: 'MinuteCounter'
-  });
-</script>
 
 
 <h1>The Current Round is: <%= @game.current_round%></h1>
@@ -18,6 +12,11 @@
 </br>
 <div class="my-clock"></div>
 <div id="game"></div>
-
+<script type="text/javascript">
+  var clock = $('.my-clock').FlipClock(<%= @time_til_next_round%>, {
+    countdown: true,
+    clockFace: 'MinuteCounter'
+  });
+</script>
 
 
