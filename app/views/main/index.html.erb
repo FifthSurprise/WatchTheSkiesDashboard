@@ -1,0 +1,11 @@
+
+
+<h1>The Current Round is: <%= @game.current_round%></h1>
+<h2>Next Round is at: <%= @next_round%></h2>
+
+<% if @game.paused %>
+  <p>The round is currently paused.</p>
+<% end %>
+
+<h2>The current terror level is 
+  <%= @terror%></h2>

@@ -1,0 +1,33 @@
+<h1>Listing terror_trackers</h1>
+
+<table border=1>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th >Round</th>
+      <th >Amount</th>
+      <th >Description</th>
+      <th >Show</th>
+      <th >Edit</th>
+      <th >Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @terror_trackers.each_with_index do |terror_tracker, index| %>
+      <tr>
+        <td><%= index+1 %></td>
+        <td><%= terror_tracker.round %></td>
+        <td><%= terror_tracker.amount %></td>
+        <td><%= terror_tracker.description %></td>
+        <td><%= link_to 'Show', terror_tracker %></td>
+        <td><%= link_to 'Edit', edit_terror_tracker_path(terror_tracker) %></td>
+        <td><%= link_to 'Destroy', terror_tracker, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Terror Tracker Entry', new_terror_tracker_path %>

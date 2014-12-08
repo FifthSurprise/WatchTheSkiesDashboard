@@ -14,3 +14,5 @@ Things that application needs to track:
       - Ex. Stuff from UN.
       - Celebrity events (Justin Bieber running for mayor in Toronto)
       - Corporate product releases/ Catch Phrases
+
+  5. Nuclear launch detected
