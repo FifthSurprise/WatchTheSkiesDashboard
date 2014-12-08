@@ -1,0 +1,10 @@
+<h1>Administrative Controls</h1>
+<div class="light well">
+   
+   <h2>Warning: this wipes <em>all</em> the data.</h2>
+   <h3>It will also take a little bit of time to run.</h3>
+    <%= form_tag reset_game_path, :method => 'post' do %>
+      <%= submit_tag "Reset Game" %>
+    <% end %>
+   
+  </div>

@@ -69,6 +69,6 @@ class TerrorTrackersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def terror_tracker_params
-      params[:terror_tracker]
+      params[:terror_tracker].permit(:description, :amount, :round)
     end
 end

@@ -9,3 +9,12 @@
 
 <h2>The current terror level is 
   <%= @terror%></h2>
+</br>
+<div class="my-clock"></div>
+
+<script type="text/javascript">
+  var clock = $('.my-clock').FlipClock(<%= @time_til_next_round%>, {
+    countdown: true,
+    clockFace: 'MinuteCounter'
+  });
+</script>
