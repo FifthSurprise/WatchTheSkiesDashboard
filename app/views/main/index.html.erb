@@ -1,18 +1,44 @@
 
+<div ng-controller="IndexCtrl">
+  <h1>The Current Round is: {{current_round}}</h1>
+  <h2>Next Round is at: {{next_round}}</h2>
 
-<h1>The Current Round is: <%= @game.current_round%></h1>
-<h2>Next Round is at: <%= @next_round%></h2>
+  <h1 ng-if="paused">
+  The round is currently paused.
+  </h1>
 
-<% if @game.paused %>
-  <p>The round is currently paused.</p>
-<% end %>
+  <h2>The current terror level is 
+    <%= @terror%></h2>
+  </br>
 
-<h2>The current terror level is 
-  <%= @terror%></h2>
-</br>
-<div class="my-clock"></div>
-<div id="game"></div>
+  <div ng-hide="!paused" class="my-clock"></div>
+    <div id="game"></div>
+  </div>
+
+  <button ng-click="getStatus()">Refresh</button>
+</div>
 <script type="text/javascript">
+var app = angular.module('baseApp', [])
+  .controller('IndexCtrl', ['$scope','$http', function($scope, $http){
+  var apiCall = function(){
+    $http.get('/status.json').
+      success(function(data, status, headers, config) {
+        $scope.current_round = data['game']['current_round'];
+        $scope.next_round = data['next_round'];
+        $scope.paused = data['game']['paused'];
+        $scope.time_til_next_round = data['time_til_next_round'];
+        console.log($scope.time_til_next_round);
+        clock.setTime($scope.time_til_next_round );
+      });
+    console.log("ping");
+    }
+  apiCall();
+  $scope.getStatus = function(){
+    console.log("Starting");
+    apiCall();
+  };
+}]);
+
   var clock = $('.my-clock').FlipClock(<%= @time_til_next_round%>, {
     countdown: true,
     clockFace: 'MinuteCounter'

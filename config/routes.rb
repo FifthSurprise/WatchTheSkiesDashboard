@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :terror_trackers
   post 'reset_game', to: 'main#reset_game', :as => 'reset_game'
+  get 'status', to: 'main#index'
   get 'admin' =>'main#admin'
   root 'main#index'
   
