@@ -7,8 +7,7 @@
   The round is currently paused.
   </h1>
 
-  <h2>The current terror level is 
-    <%= @terror%></h2>
+  <h2>The current terror level is {{terror}}.</h2>
   </br>
 
   <div ng-hide="!paused" class="my-clock"></div>
@@ -18,7 +17,7 @@
 </div>
 <script type="text/javascript">
 var app = angular.module('baseApp', [])
-  .controller('IndexCtrl', ['$scope','$http', function($scope, $http){
+  .controller('IndexCtrl', ['$scope','$interval','$http', function($scope, $interval,$http){
   var apiCall = function(){
     $http.get('/status.json').
       success(function(data, status, headers, config) {
@@ -26,16 +25,16 @@ var app = angular.module('baseApp', [])
         $scope.next_round = data['next_round'];
         $scope.paused = data['game']['paused'];
         $scope.time_til_next_round = data['time_til_next_round'];
-        console.log($scope.time_til_next_round);
+        $scope.terror = data['terror']
         clock.setTime($scope.time_til_next_round );
       });
     console.log("ping");
     }
   apiCall();
   $scope.getStatus = function(){
-    console.log("Starting");
     apiCall();
   };
+  $interval(function(){$scope.getStatus()}, 3000); 
 }]);
 
   var clock = $('.my-clock').FlipClock(<%= @time_til_next_round%>, {

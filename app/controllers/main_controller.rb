@@ -12,7 +12,7 @@ class MainController < ApplicationController
     data[:game] = @game
     data[:next_round] = @next_round
     data[:time_til_next_round] = (@game.next_round - Time.now)
-
+    data[:terror] = @terror
     respond_to do |format|
       format.html
       format.json {render json: data}
