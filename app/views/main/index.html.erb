@@ -2,8 +2,17 @@
 <div ng-app='baseApp' ng-controller="IndexCtrl">
   <h1>The Current Round is: {{current_round}}</h1>
   <h2>Next Round is at: {{next_round}}</h2>
-  <h2>The current terror level is {{terror}}.</h2>
-  </br>
+
+<div class="panel panel-default">
+  <div class="panel-heading"><h2>The current terror level is {{terror}}.</h2></div>
+  <div class="panel-body">
+    <div class="progress">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{terror}}" aria-valuemin="0" aria-valuemax="250" style="width: {{terror/2.5}}%;">
+        Terror Level: {{terror}}
+      </div>
+    </div>
+  </div>
+</div>
   <h1>Control Says: "{{message}}"</h1>
   
   <h1 ng-if="paused">
