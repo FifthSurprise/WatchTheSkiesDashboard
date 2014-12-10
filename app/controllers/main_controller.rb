@@ -3,7 +3,11 @@ class MainController < ApplicationController
   def index
     #access main dashboard
     @game = update()
-    @next_round = @game.next_round.getlocal.strftime("%l:%M:%S %p")
+    unless @game.paused
+      @next_round = @game.next_round.getlocal.strftime("%l:%M:%S %p")
+    else
+      @next_round = (@game.next_round + (Time.now - @game.pause_time)).getlocal.strftime("%l:%M:%S %p")
+    end 
     @terror = TerrorTracker.sum(:amount)
     @time_til_next_round = (@game.next_round - Time.now)*6
     p "Next round time is : #{@time_til_next_round}"
