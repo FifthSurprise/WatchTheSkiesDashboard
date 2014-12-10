@@ -1,8 +1,8 @@
 class MainController < ApplicationController
-  
+  QUARTER_HOUR = 15*60
   def index
     #access main dashboard
-    @game = Game.first
+    @game = update()
     @next_round = @game.next_round.getlocal.strftime("%l:%M:%S %p")
     @terror = TerrorTracker.sum(:amount)
     @time_til_next_round = (@game.next_round - Time.now)*6
@@ -23,7 +23,7 @@ class MainController < ApplicationController
       Game.delete_all
       TerrorTracker.delete_all
       g = Game.create()
-      g.next_round = g.created_at + 15*60
+      g.next_round = g.created_at + QUARTER_HOUR
       g.paused = true
       g.save
 
@@ -37,5 +37,18 @@ class MainController < ApplicationController
   end
 
   def admin
+  end
+
+  private
+  def update
+    game = Game.first
+    if game.paused
+      if game.next_round < Time.now
+        game.current_round +=1
+        game.next_round = game.next_round + QUARTER_HOUR
+        game.save()
+      end
+    end
+    return game
   end
 end

@@ -16,8 +16,14 @@
   <button ng-click="getStatus();">Refresh</button>
 </div>
 <script type="text/javascript">
+  var clock = $('.my-clock').FlipClock(<%= @time_til_next_round%>, {
+    countdown: true,
+    clockFace: 'MinuteCounter'
+  });
+
 var app = angular.module('baseApp', [])
   .controller('IndexCtrl', ['$scope','$interval','$http', function($scope, $interval,$http){
+    $scope.time_til_next_round = 3000;
   var apiCall = function(){
     $http.get('/status.json').
       success(function(data, status, headers, config) {
@@ -28,19 +34,13 @@ var app = angular.module('baseApp', [])
         $scope.terror = data['terror']
         clock.setTime($scope.time_til_next_round );
       });
-    console.log("ping");
     }
-  apiCall();
   $scope.getStatus = function(){
     apiCall();
   };
+  $scope.getStatus();
   $interval(function(){$scope.getStatus()}, 3000); 
 }]);
-
-  var clock = $('.my-clock').FlipClock(<%= @time_til_next_round%>, {
-    countdown: true,
-    clockFace: 'MinuteCounter'
-  });
 </script>
 
 
