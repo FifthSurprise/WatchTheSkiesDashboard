@@ -53,7 +53,7 @@ class MainController < ApplicationController
     @game = Game.first
     
     #Game was paused
-    if @game.paused
+    unless @game.paused
       @game.next_round = @game.next_round + (Time.now - @game.pause_time)
     else
       @game.pause_time = Time.now
