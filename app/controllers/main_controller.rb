@@ -23,6 +23,7 @@ class MainController < ApplicationController
       Game.delete_all
       TerrorTracker.delete_all
       g = Game.create()
+      g.control_message = "Welcome to Watch the Skies!"
       g.next_round = g.created_at + QUARTER_HOUR
       g.paused = true
       g.save
@@ -37,6 +38,14 @@ class MainController < ApplicationController
   end
 
   def admin
+    @game = Game.first
+  end
+
+  def update_control_message
+    @game = Game.first
+    @game.control_message = params[:game][:control_message]
+    @game.save
+    redirect_to admin_controls_path
   end
 
   private

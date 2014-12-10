@@ -11,14 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141208001941) do
+ActiveRecord::Schema.define(version: 20141210024858) do
 
   create_table "games", force: true do |t|
-    t.integer  "current_round", :default => 0
+    t.integer  "current_round",   default: 0
     t.datetime "next_round"
-    t.boolean  "paused", :default => true 
+    t.boolean  "paused",          default: true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "control_message"
   end
 
   create_table "terror_trackers", force: true do |t|

@@ -9,7 +9,7 @@
 
   <h2>The current terror level is {{terror}}.</h2>
   </br>
-
+  <h1>Control Says: "{{message}}"</h1>
   <div ng-hide="!paused" class="my-clock"></div>
     <div id="game"></div>
 
@@ -30,6 +30,7 @@ var app = angular.module('baseApp', [])
         $scope.current_round = data['game']['current_round'];
         $scope.next_round = data['next_round'];
         $scope.paused = data['game']['paused'];
+        $scope.message = data['game']['control_message'];
         $scope.time_til_next_round = data['time_til_next_round'];
         $scope.terror = data['terror']
         clock.setTime($scope.time_til_next_round );

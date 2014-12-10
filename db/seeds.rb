@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 g = Game.create()
+g.control_message = "Welcome to Watch the Skies!"
 g.next_round = g.created_at + 15*60
 g.paused = true
 g.save

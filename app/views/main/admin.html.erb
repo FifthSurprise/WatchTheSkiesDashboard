@@ -8,3 +8,13 @@
     <% end %>
    
   </div>
+
+<h1> Update Control's message to players: </h1>
+
+<%= form_for @game, url: alert_update_path do |f| %>
+ <div class="actions">
+    <%= f.label "Update Message" %> </br>
+    <%= f.text_field :control_message, :size => "60x5"%></br>
+    <%= f.submit %>
+  </div>
+<% end %>

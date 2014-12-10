@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
   resources :terror_trackers
   post 'reset_game', to: 'main#reset_game', :as => 'reset_game'
+  patch 'alert_update', to: 'main#update_control_message', :as => "alert_update"
   get 'status', to: 'main#index'
-  get 'admin' =>'main#admin'
+  get 'admin' =>'main#admin', :as =>'admin_controls'
   root 'main#index'
   
   # The priority is based upon order of creation: first created -> highest priority.
