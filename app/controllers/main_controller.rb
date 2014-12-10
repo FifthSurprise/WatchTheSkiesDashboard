@@ -1,5 +1,4 @@
 class MainController < ApplicationController
-  QUARTER_HOUR = 15*60
   def index
     #access main dashboard
     @game = update()
@@ -28,7 +27,7 @@ class MainController < ApplicationController
       TerrorTracker.delete_all
       g = Game.create()
       g.control_message = "Welcome to Watch the Skies!"
-      g.next_round = g.created_at + QUARTER_HOUR
+      g.next_round = g.created_at + 15*60
       g.paused = true
       g.pause_time = g.created_at
       g.save
@@ -73,7 +72,7 @@ class MainController < ApplicationController
     if game.paused
       if game.next_round < Time.now
         game.current_round +=1
-        game.next_round = game.next_round + QUARTER_HOUR
+        game.next_round = game.next_round + 15*60
         game.save()
       end
     end
