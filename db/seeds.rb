@@ -9,6 +9,7 @@
 g = Game.create()
 g.control_message = "Welcome to Watch the Skies!"
 g.next_round = g.created_at + 15*60
+g.pause_time = g.created_at
 g.paused = true
 g.save
 

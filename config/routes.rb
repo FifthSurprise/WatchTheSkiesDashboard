@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resources :terror_trackers
   post 'reset_game', to: 'main#reset_game', :as => 'reset_game'
-  patch 'alert_update', to: 'main#update_control_message', :as => "alert_update"
+  patch 'alert_update', to: 'main#update_control_message', as: :alert_update
+  post 'toggle_game_status', to: 'main#toggle_game_status', as: :toggle_game_status
   get 'status', to: 'main#index'
   get 'admin' =>'main#admin', :as =>'admin_controls'
   root 'main#index'

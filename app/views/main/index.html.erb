@@ -2,15 +2,14 @@
 <div ng-app='baseApp' ng-controller="IndexCtrl">
   <h1>The Current Round is: {{current_round}}</h1>
   <h2>Next Round is at: {{next_round}}</h2>
-
-  <h1 ng-if="paused">
-  The round is currently paused.
-  </h1>
-
   <h2>The current terror level is {{terror}}.</h2>
   </br>
   <h1>Control Says: "{{message}}"</h1>
-  <div ng-hide="!paused" class="my-clock"></div>
+  
+  <h1 ng-if="paused">
+  The round is currently paused.
+  </h1>
+  <div ng-hide="paused" class="my-clock"></div>
     <div id="game"></div>
 
   <button ng-click="getStatus();">Refresh</button>

@@ -26,6 +26,7 @@ class MainController < ApplicationController
       g.control_message = "Welcome to Watch the Skies!"
       g.next_round = g.created_at + QUARTER_HOUR
       g.paused = true
+      g.pause_time = g.created_at
       g.save
 
       t = TerrorTracker.create()
@@ -44,6 +45,20 @@ class MainController < ApplicationController
   def update_control_message
     @game = Game.first
     @game.control_message = params[:game][:control_message]
+    @game.save
+    redirect_to admin_controls_path
+  end
+
+  def toggle_game_status
+    @game = Game.first
+    
+    #Game was paused
+    if @game.paused
+      @game.next_round = @game.next_round + (Time.now - @game.pause_time)
+    else
+      @game.pause_time = Time.now
+    end
+    @game.paused = !@game.paused
     @game.save
     redirect_to admin_controls_path
   end
