@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  resources :games
   resources :terror_trackers
   post 'reset_game', to: 'main#reset_game', :as => 'reset_game'
   patch 'alert_update', to: 'main#update_control_message', as: :alert_update

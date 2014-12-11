@@ -1,0 +1,24 @@
+<%= form_for(@game) do |f| %>
+  <% if @game.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@game.errors.count, "error") %> prohibited this game from being saved:</h2>
+
+      <ul>
+      <% @game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div class="actions">
+    <%= f.label "Control Message" %> </br>
+    <%= f.text_area :control_message, :size => "60x5"%></br>
+    <%= f.label "Current Round" %> </br>
+    <%= f.number_field :current_round, :in => 0..12, :step => '1'%></br>
+    <%= f.label "Next Round Time" %> </br>
+    <%= f.datetime_local_field :next_round, :ampm => true, :minute_step => 15 %>
+    <%= f.submit %>
+  </div>
+<% end %>

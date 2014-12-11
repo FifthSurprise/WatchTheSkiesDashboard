@@ -14,9 +14,9 @@
 ActiveRecord::Schema.define(version: 20141210045919) do
 
   create_table "games", force: true do |t|
-    t.integer  "current_round",   default: 0
+    t.integer  "current_round"
     t.datetime "next_round"
-    t.boolean  "paused",          default: true
+    t.boolean  "paused"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "control_message"
