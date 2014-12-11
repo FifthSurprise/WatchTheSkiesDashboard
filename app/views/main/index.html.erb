@@ -12,7 +12,8 @@
   <div class="panel-heading"><h2>The current terror level is {{terror}}.</h2></div>
   <div class="panel-body">
     <div class="progress">
-      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{terror}}" aria-valuemin="0" aria-valuemax="250" style="width: {{terror/2.5}}%;">
+      <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{terror}}" aria-valuemin="-30" aria-valuemax="250" style="width: {{((terror+30)/2.8)}}%;
+      background-color:{{getColor((terror+30)/250)}};">
         Terror Level: {{terror}}
       </div>
     </div>
@@ -49,6 +50,7 @@
 
 var app = angular.module('baseApp', [])
   .controller('IndexCtrl', ['$scope','$interval','$http', function($scope, $interval,$http){
+    $scope.Math=Math;
     $scope.time_til_next_round = 3000;
   var apiCall = function(){
     $http.get('/status.json').
@@ -66,6 +68,11 @@ var app = angular.module('baseApp', [])
   $scope.getStatus = function(){
     apiCall();
   };
+  $scope.getColor = function(value){
+    //value from 0 to 1
+    var hue=((1-value)*120).toString(10);
+    return ["hsl(",hue,",75%,50%)"].join("");
+}
   $scope.getStatus();
   $interval(function(){$scope.getStatus()}, 3000); 
 }]);
