@@ -70,7 +70,7 @@ class MainController < ApplicationController
   private
   def update
     game = Game.first
-    if game.paused
+    unless game.paused
       if game.next_round < Time.now
         game.current_round +=1
         game.next_round = game.next_round + (15*60)

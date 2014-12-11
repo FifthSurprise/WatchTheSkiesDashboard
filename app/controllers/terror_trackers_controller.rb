@@ -28,7 +28,7 @@ class TerrorTrackersController < ApplicationController
 
     respond_to do |format|
       if @terror_tracker.save
-        format.html { redirect_to @terror_tracker, notice: 'Terror tracker was successfully created.' }
+        format.html { redirect_to terror_trackers_path , notice: 'Terror tracker was successfully created.' }
         format.json { render :show, status: :created, location: @terror_tracker }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class TerrorTrackersController < ApplicationController
   def update
     respond_to do |format|
       if @terror_tracker.update(terror_tracker_params)
-        format.html { redirect_to @terror_tracker, notice: 'Terror tracker was successfully updated.' }
+        format.html { redirect_to terror_trackers_path, notice: 'Terror tracker was successfully updated.' }
         format.json { render :show, status: :ok, location: @terror_tracker }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class TerrorTrackersController < ApplicationController
   def destroy
     @terror_tracker.destroy
     respond_to do |format|
-      format.html { redirect_to terror_trackers_url, notice: 'Terror tracker was successfully destroyed.' }
+      format.html { redirect_to terror_trackers_path, notice: 'Terror tracker was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
