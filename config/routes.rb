@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :nuclear_codes
   resources :games
   resources :terror_trackers
   post 'reset_game', to: 'main#reset_game', :as => 'reset_game'

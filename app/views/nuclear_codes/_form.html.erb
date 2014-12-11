@@ -1,0 +1,17 @@
+<%= form_for(@nuclear_code) do |f| %>
+  <% if @nuclear_code.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@nuclear_code.errors.count, "error") %> prohibited this nuclear_code from being saved:</h2>
+
+      <ul>
+      <% @nuclear_code.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

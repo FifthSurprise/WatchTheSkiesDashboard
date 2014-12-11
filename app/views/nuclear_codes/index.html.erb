@@ -1,0 +1,23 @@
+<h1>Listing nuclear_codes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @nuclear_codes.each do |nuclear_code| %>
+      <tr>
+        <td><%= link_to 'Show', nuclear_code %></td>
+        <td><%= link_to 'Edit', edit_nuclear_code_path(nuclear_code) %></td>
+        <td><%= link_to 'Destroy', nuclear_code, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Nuclear code', new_nuclear_code_path %>

@@ -1,0 +1,2 @@
+module NuclearCodesHelper
+end
