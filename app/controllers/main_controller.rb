@@ -27,7 +27,8 @@ class MainController < ApplicationController
       TerrorTracker.delete_all
       g = Game.create()
       g.control_message = "Welcome to Watch the Skies!"
-      g.next_round = g.created_at + 15*60
+      g.current_round = 0
+      g.next_round = g.created_at + (15*60)
       g.paused = true
       g.pause_time = g.created_at
       g.save
@@ -72,7 +73,7 @@ class MainController < ApplicationController
     if game.paused
       if game.next_round < Time.now
         game.current_round +=1
-        game.next_round = game.next_round + 15*60
+        game.next_round = game.next_round + (15*60)
         game.save()
       end
     end
