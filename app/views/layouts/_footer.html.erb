@@ -1,0 +1,8 @@
+<% unless current_page?('/')%>
+<ul class="nav nav-pills">
+    <li><%= link_to 'Admin Controls', admin_controls_path %></li>
+    <li><%= link_to 'Game Controls', games_path %></li>
+    <li><%= link_to 'Terror Tracker controls', terror_trackers_path %></li>
+  </div>
+</ul>
+<% end %>
