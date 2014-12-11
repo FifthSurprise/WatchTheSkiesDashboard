@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
   resources :nuclear_codes
   resources :games
   resources :terror_trackers
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
   post 'toggle_game_status', to: 'main#toggle_game_status', as: :toggle_game_status
   get 'status', to: 'main#index'
   get 'admin' =>'main#admin', :as =>'admin_controls'
-  root 'main#index'
+  root to: "main#index"
   
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

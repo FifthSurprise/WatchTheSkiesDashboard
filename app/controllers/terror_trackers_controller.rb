@@ -1,6 +1,7 @@
 class TerrorTrackersController < ApplicationController
   before_action :set_terror_tracker, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
+  
   # GET /terror_trackers
   # GET /terror_trackers.json
   def index

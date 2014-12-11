@@ -1,4 +1,5 @@
 class MainController < ApplicationController
+  before_action :authenticate_admin!, only: [:admin]
   def index
     #access main dashboard
     @game = update()

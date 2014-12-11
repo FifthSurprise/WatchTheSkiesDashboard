@@ -18,3 +18,9 @@ t.description = "Initial setting of Terror level"
 t.amount = 0
 t.round = 0
 t.save
+
+a = Admin.create()
+a.email = "wts@wts.com"
+a.password='swordfish'
+a.password_confirmation='swordfish'
+a.save

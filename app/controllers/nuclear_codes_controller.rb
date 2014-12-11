@@ -1,6 +1,7 @@
 class NuclearCodesController < ApplicationController
   before_action :set_nuclear_code, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_admin!
+  
   # GET /nuclear_codes
   # GET /nuclear_codes.json
   def index
