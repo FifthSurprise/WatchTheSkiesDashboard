@@ -24,7 +24,7 @@ class MainController < ApplicationController
   end
 
   def reset_game
-    Game.first.reset
+    Game.reset
     redirect_to root_path
   end
 
