@@ -11,6 +11,14 @@
   </div>
 <% end %>
 
+<%= form_for @game do |f| %>
+ <div class="actions">
+    <%= f.label "Rioters" %> </br>
+    <%= f.number_field :rioters, :in => 0..12, :step => '1'%></br>
+    <%= f.submit %>
+  </div>
+<% end %>
+
 <h1>Pause/Unpause Game:
 <%= link_to toggle_game_status_path, method: :post, class: "btn btn-default" do %>
   <% if @game.paused %>

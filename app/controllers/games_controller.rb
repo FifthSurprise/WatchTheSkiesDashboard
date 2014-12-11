@@ -69,6 +69,6 @@ class GamesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def game_params
-      params[:game].permit(:current_round,:next_round,:paused,:control_message,:pause_time)
+      params[:game].permit(:rioters,:current_round,:next_round,:paused,:control_message,:pause_time)
     end
 end

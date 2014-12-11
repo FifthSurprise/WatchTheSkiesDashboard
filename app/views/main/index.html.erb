@@ -1,11 +1,12 @@
 <div class="page-header">
   <%= image_tag "WTSlogo.png", height: '100'%>
-  <span>In association with: </span>
+  <h2 style="display:inline;margin:50px">In association with: </h2>
   <%= image_tag "logos/logo1.png", id: 'bannerImage', height:'100', :style =>"min-width: 150px;"%>
 </div>
 <div ng-app='baseApp' ng-controller="IndexCtrl">
   <h1>The Current Round is: {{current_round}}</h1>
   <h2>Next Round (#{{current_round+1}}) is at: {{next_round}}</h2>
+  <h2><span ng-show="rioters>0"># of Rioters: {{rioters}}</span>&nbsp</h2>
 
 <div class="panel panel-default">
   <div class="panel-heading"><h2>The current terror level is {{terror}}.</h2></div>
@@ -28,7 +29,7 @@
 </div>
 
 <script type="text/javascript">
-  var images = ["/assets/logos/logo1.png","/assets/logos/logo12.png","/assets/logos/logo13.png"];
+  var images = ["/assets/logos/logo1.png","/assets/logos/logo2.png","/assets/logos/logo3.png"];
   var i = 0;
   var renew = setInterval(function(){
     console.log('ping');
@@ -56,6 +57,7 @@ var app = angular.module('baseApp', [])
         $scope.next_round = data['next_round'];
         $scope.paused = data['game']['paused'];
         $scope.message = data['game']['control_message'];
+        $scope.rioters = data['game']['rioters'];
         $scope.time_til_next_round = data['time_til_next_round'];
         $scope.terror = data['terror']
         clock.setTime($scope.time_til_next_round );
