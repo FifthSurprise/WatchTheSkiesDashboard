@@ -12,6 +12,23 @@
   <% end %>
 
   <div class="actions">
+    <%= f.label "Country" %> </br>
+    <%= f.text_field :country%></br>
+    <%= f.label "Head of State" %> </br>
+    <%= f.text_field :codeA%></br>
+    <%= f.label "Military Code" %> </br>
+    <%= f.text_field :codeB%></br>
+    <%= f.label "Country Flag" %> </br>
+    <%= f.select :country_flag, ["flag_brazil.jpg",
+      "flag_china.jpg",
+      "flag_france.jpg",
+      "flag_germany.jpg",
+      "flag_india.jpg",
+      "flag_japan.jpg",
+      "flag_russia.jpg",
+      "flag_uk.jpg",
+      "flag_us.jpg"] %>
     <%= f.submit %>
   </div>
 <% end %>
+

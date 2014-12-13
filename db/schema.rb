@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211050517) do
+ActiveRecord::Schema.define(version: 20141213032407) do
 
   create_table "admins", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -45,6 +45,11 @@ ActiveRecord::Schema.define(version: 20141211050517) do
   create_table "nuclear_codes", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "country"
+    t.string   "codeA"
+    t.string   "codeB"
+    t.string   "target"
+    t.string   "country_flag", default: "flag_"
   end
 
   create_table "terror_trackers", force: true do |t|

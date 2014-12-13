@@ -2,6 +2,13 @@ class NuclearCodesController < ApplicationController
   before_action :set_nuclear_code, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
   
+  def enter_launch_codes
+  end
+
+  def verify_launch_codes
+
+  end
+
   # GET /nuclear_codes
   # GET /nuclear_codes.json
   def index
@@ -70,6 +77,6 @@ class NuclearCodesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def nuclear_code_params
-      params[:nuclear_code]
+      params[:nuclear_code].permit(:country,:codeA,:codeB,:target,:country_flag)
     end
 end
