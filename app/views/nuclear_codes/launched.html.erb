@@ -1,3 +1,58 @@
-<h1>
-  Launched <%= @launch.country%>
-</h1>
+<style type="text/css">
+  body{
+    background-color: black;
+    color: #00ff00;
+    margin-left: 20px;
+    font-family: "serif";
+  }
+</style>
+<h2 class="start"></h2>
+<h2 class="next2"></h2>
+<h3 class="next3"></h3>
+<h3 class="next4"></h3>
+
+<script type="text/javascript">
+var flag = <%= %Q['#{image_tag 'Flags/'+@launch.country_flag, height: '50', width: '80'}'].html_safe %>;
+var silo = <%= %Q['#{image_tag 'silo.jpg', height: '200', width: '250'}'].html_safe %>;
+var target = <%= %Q["#{@launch.target}"].html_safe %>;
+$(function(){
+    $(".start").typed({
+        strings: [<%= %Q["Activating..."].html_safe %>],
+        typeSpeed: 100,
+        cursorChar:"",
+        onStringTyped:function(){ 
+          next2();
+        }
+    });
+});
+next2 = function(){
+    $(".next2").typed({
+        strings: ["Launch Sequence Initiated"],
+        typeSpeed: 100,
+        cursorChar:"",
+        onStringTyped:function(){ 
+          $(".next2").after(silo);
+          next3();
+        }
+    })};
+next3 = function(){
+    $(".next3").typed({
+        strings: ["Origin:"],
+        typeSpeed: 100,
+        cursorChar:"",
+        onStringTyped:function(){ 
+          $(".next3").after(flag);
+          next4();
+        }
+    })};
+next4 = function(){
+    $(".next4").typed({
+        strings: ["Target:  "],
+        typeSpeed: 100,
+        cursorChar:"",
+        onStringTyped:function(){ 
+          $(".next4").after("<h3>"+target+"</h3>");
+          // next3();
+        }
+    })};
+</script>
