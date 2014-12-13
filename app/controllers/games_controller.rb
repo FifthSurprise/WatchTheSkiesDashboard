@@ -40,6 +40,7 @@ class GamesController < ApplicationController
   # PATCH/PUT /games/1
   # PATCH/PUT /games/1.json
   def update
+    @game.pause_time=Time.now
     respond_to do |format|
       if @game.update(game_params)
         format.html { redirect_to admin_controls_path, notice: 'Game was successfully updated.' }
