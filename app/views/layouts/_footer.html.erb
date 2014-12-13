@@ -1,5 +1,6 @@
 <% unless current_page?('/')%>
 <ul class="nav nav-pills">
+    <li><%= link_to 'Dashboard', root_path , method: :get %></li>
     <li><%= link_to 'Admin Controls', admin_controls_path %></li>
     <li><%= link_to 'Game Controls', edit_game_path(Game.first) %></li>
     <li><%= link_to 'Terror Tracker controls', terror_trackers_path %></li>

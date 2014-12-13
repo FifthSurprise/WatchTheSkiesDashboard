@@ -9,17 +9,16 @@
   <h2><span ng-show="rioters>0"># of Rioters: {{rioters}}</span>&nbsp</h2>
 
 <div class="panel panel-default">
-  <div class="panel-heading"><h2>The current terror level is {{terror}}.</h2></div>
   <div class="panel-body">
     <div class="progress">
       <div class="progress-bar progress-bar-striped active" role="progressbar" aria-valuenow="{{terror}}" aria-valuemin="-30" aria-valuemax="250" style="width: {{((terror+30)/2.8)}}%;
       background-color:{{getColor((terror+30)/250)}};">
-        Terror Level: {{terror}}
+        <div>Terror Level: {{terror}}</div>
       </div>
     </div>
   </div>
 </div>
-  <h1>Control Says: "{{message}}"</h1>
+  <h1>Notice: "{{message}}"</h1>
   
   <h1 ng-if="paused">
   The round is currently paused.
@@ -38,7 +37,6 @@
   <%= %Q["#{image_url 'logos/logo2.png'}"].html_safe %>];
   var i = 0;
   var renew = setInterval(function(){
-    console.log('ping');
       if(images.length == i){
           i = 0;
       }
@@ -81,6 +79,7 @@ var app = angular.module('baseApp', [])
   $scope.getStatus();
   $interval(function(){$scope.getStatus()}, 3000); 
 }]);
+
 </script>
 
 
