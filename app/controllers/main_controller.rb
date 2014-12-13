@@ -56,6 +56,11 @@ class MainController < ApplicationController
   private
   def update
     game = Game.first
+    # Can't have more than 12 rounds.
+    if game.current_round > 13
+      game.paused = True
+      game.saved
+    end
     unless game.paused
       if game.next_round < Time.now
         game.current_round +=1

@@ -1,3 +1,5 @@
+<h1 class="test"></h1>
+<h1 class="test2"></h1>
 <div class="page-header">
   <%= image_tag "WTSlogo.png", height: '100'%>
   <h2 style="display:inline;margin:50px">In association with: </h2>
@@ -79,6 +81,24 @@ var app = angular.module('baseApp', [])
   $scope.getStatus();
   $interval(function(){$scope.getStatus()}, 3000); 
 }]);
+
+// $(function(){
+//     $(".test").typed({
+//         strings: ["First sentence."],
+//         typeSpeed: 100,
+//         cursorChar:"",
+//         onStringTyped:function(){ 
+//    test2();
+//         }
+//     });
+// });
+// test2 = function(){
+//     $(".test2").typed({
+//         strings: ["Second sentence."],
+//         typeSpeed: 100,
+//         cursorChar:""
+//     })};
+
 
 </script>
 

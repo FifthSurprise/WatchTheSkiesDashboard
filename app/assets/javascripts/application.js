@@ -16,3 +16,4 @@
 //= require_tree .
 // Vendor Files
 //= require flipclock.js
+//= require typed.js
