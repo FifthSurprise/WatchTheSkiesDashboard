@@ -1,7 +1,7 @@
 <div class="page-header">
   <%= image_tag "WTSlogo.png", height: '100'%>
   <h2 style="display:inline;margin:50px">In association with: </h2>
-  <%= image_tag "logos/logo1.png", id: 'bannerImage', height:'100', :style =>"min-width: 150px;"%>
+  <%= image_tag "logos/logo2.png", id: 'bannerImage', height:'100', :style =>"min-width: 150px;"%>
 </div>
 <div ng-app='baseApp' ng-controller="IndexCtrl">
   <h1>The Current Round is: {{current_round}}</h1>
@@ -30,9 +30,12 @@
 </div>
 
 <script type="text/javascript">
-  var images = [<%= %Q["#{image_url 'logos/logo1.png'}"].html_safe %>,
-  <%= %Q["#{image_url 'logos/logo2.png'}"].html_safe %>,
-  <%= %Q["#{image_url 'logos/logo3.png'}"].html_safe %>];
+  var images = [<%= %Q["#{image_url 'logos/logo4.png'}"].html_safe %>,
+  <%= %Q["#{image_url 'logos/logo1.png'}"].html_safe %>,
+  <%= %Q["#{image_url 'logos/logo5.png'}"].html_safe %>,
+  <%= %Q["#{image_url 'logos/logo3.png'}"].html_safe %>,
+  <%= %Q["#{image_url 'logos/logo6.png'}"].html_safe %>,
+  <%= %Q["#{image_url 'logos/logo2.png'}"].html_safe %>];
   var i = 0;
   var renew = setInterval(function(){
     console.log('ping');
