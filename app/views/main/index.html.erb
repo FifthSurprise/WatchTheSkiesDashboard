@@ -30,7 +30,9 @@
 </div>
 
 <script type="text/javascript">
-  var images = ["/assets/logos/logo1.png","/assets/logos/logo2.png","/assets/logos/logo3.png"];
+  var images = [<%= %Q["#{image_url 'logos/logo1.png'}"].html_safe %>,
+  <%= %Q["#{image_url 'logos/logo2.png'}"].html_safe %>,
+  <%= %Q["#{image_url 'logos/logo3.png'}"].html_safe %>];
   var i = 0;
   var renew = setInterval(function(){
     console.log('ping');
