@@ -9,12 +9,14 @@
 <h2 class="start"></h2>
 <h2 class="next2"></h2>
 <h3 class="next3"></h3>
-<h3 class="next4"></h3>
+<h3 class="next4"><h3>
+<h3 class="next5"></h3>
 
 <script type="text/javascript">
 var flag = <%= %Q['#{image_tag 'Flags/'+@launch.country_flag, height: '50', width: '80'}'].html_safe %>;
 var silo = <%= %Q['#{image_tag 'silo.jpg', height: '200', width: '250'}'].html_safe %>;
 var target = <%= %Q["#{@launch.target}"].html_safe %>;
+
 $(function(){
     $(".start").typed({
         strings: [<%= %Q["Activating..."].html_safe %>],
@@ -41,18 +43,26 @@ next3 = function(){
         typeSpeed: 100,
         cursorChar:"",
         onStringTyped:function(){ 
-          $(".next3").after(flag);
           next4();
         }
     })};
 next4 = function(){
     $(".next4").typed({
+        strings: ["Searching...","Location Found..."],
+        typeSpeed: 100,
+        cursorChar:"",
+        callback:function(){ 
+          $(".next4").after(flag);
+          next5();
+        }
+})};
+next5 = function(){
+    $(".next5").typed({
         strings: ["Target:  "],
         typeSpeed: 100,
         cursorChar:"",
         onStringTyped:function(){ 
-          $(".next4").after("<h3>"+target+"</h3>");
-          // next3();
+          $(".next5").after("<h3>"+target+"</h3>");
         }
     })};
 </script>
