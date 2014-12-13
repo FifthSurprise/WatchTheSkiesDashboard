@@ -1,12 +1,44 @@
 class NuclearCodesController < ApplicationController
   before_action :set_nuclear_code, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_admin!
-  
+
+  def launched
+    unless Game.first.nuclear_launch
+      redirect_to root_paths
+    end
+    @launch = NuclearCode.where("target is not null").where("target is not ''")[0]
+    if @launch.nil?
+      g = Game.first
+      g.nuclear_launch = false
+      g.save
+      redirect_to root_paths
+    end
+  end
+
   def enter_launch_codes
   end
 
   def verify_launch_codes
+    codeA = params['codeA']
+    codeB = params['codeB']
+    target = params['target']
+    entries = NuclearCode.where(codeA: codeA).where(codeB: codeB)
+    unless entries.count==1 
+    entries = NuclearCode.where(codeA: codeB).where(codeB: codeA)
+    end
 
+    if entries.count==1
+      entry = entries[0]
+      #launching missiles
+      entry.target = target
+      entry.save
+      g = Game.first
+      g.nuclear_launch = true
+      g.save
+      redirect_to root_path
+    else
+      redirect_to enter_codes_path, alert: 'Code invalid.'
+    end
   end
 
   # GET /nuclear_codes
@@ -73,6 +105,10 @@ class NuclearCodesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_nuclear_code
       @nuclear_code = NuclearCode.find(params[:id])
+    end
+
+    def foundCode? (code)
+      NuclearCode.exists?(codeB: code) or NuclearCode.exists?(codeA: code)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

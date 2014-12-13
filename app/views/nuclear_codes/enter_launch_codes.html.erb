@@ -1,0 +1,29 @@
+<h1>
+  Please Authenticate Nuclear Launch Codes.
+</h1>
+
+<%= form_tag("/verify_launch_codes", method: "post") do %>
+<table>
+  <tr>
+    <td width="50%">
+  <%= label_tag(:codeA, "Head of State Code") %> 
+    </td>
+    <td width="50%">
+  <%= text_field_tag(:codeA) %>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+  <%= label_tag(:codeA, "Military Commander Code") %>
+    </td>
+    <td width="50%">
+  <%= text_field_tag(:codeB) %>      
+    </td>
+  </tr>
+  </table>
+</br>
+  <%= label_tag "Target Location" %></br>
+  <%= text_area_tag(:target) %> </br>     
+
+  <%= submit_tag("Verify") %>
+<% end %>

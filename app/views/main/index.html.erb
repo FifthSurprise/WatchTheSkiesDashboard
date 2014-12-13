@@ -54,7 +54,7 @@
   });
 
 var app = angular.module('baseApp', [])
-  .controller('IndexCtrl', ['$scope','$interval','$http', function($scope, $interval,$http){
+  .controller('IndexCtrl', ['$scope','$interval','$http', '$location', function($scope, $interval,$http, $location){
     $scope.Math=Math;
     $scope.time_til_next_round = 3000;
   var apiCall = function(){
@@ -68,6 +68,10 @@ var app = angular.module('baseApp', [])
         $scope.time_til_next_round = data['time_til_next_round'];
         $scope.terror = data['terror']
         clock.setTime($scope.time_til_next_round );
+        if (data['game']['nuclear_launch'])
+        {
+          window.location = '/launched'
+        }
       });
     }
   $scope.getStatus = function(){

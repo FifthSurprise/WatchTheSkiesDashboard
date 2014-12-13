@@ -19,6 +19,8 @@
     <%= f.number_field :current_round, :in => 0..12, :step => '1'%></br>
     <%= f.label "Rioters" %> </br>
     <%= f.number_field :rioters%></br>
+    <%= f.label "Nuclear Launch?" %> </br>
+    <%= f.select :nuclear_launch, [true,false] %>
     <%= f.label "Next Round Time" %> </br>
     <%= f.datetime_local_field :next_round, :ampm => true, :minute_step => 15 %>
     <%= f.submit %>

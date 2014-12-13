@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
   devise_for :admins
+  get 'enter_launch_codes', to: 'nuclear_codes#enter_launch_codes', as: :enter_codes
+  get '/launched', to: 'nuclear_codes#launched', as: :launched
+
+  post 'verify_launch_codes', to: 'nuclear_codes#verify_launch_codes'
+
   resources :nuclear_codes
   resources :games
   resources :terror_trackers
