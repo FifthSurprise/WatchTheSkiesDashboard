@@ -65,7 +65,7 @@ class MainController < ApplicationController
     unless game.paused
       if game.next_round < Time.now
         game.current_round +=1
-        game.next_round = game.next_round + (15*60)
+        game.next_round = game.next_round + (30*60)
         game.save()
       end
     end
