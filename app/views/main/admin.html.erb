@@ -18,7 +18,7 @@
     <%= f.submit %>
   </div>
 <% end %>
-<h2>Nuclear launch? <%= @game.nuclear_launch%>
+<h2>Nuclear launch? <%= Launchstart.first.value%>
 </h2>
 <h1>Pause/Unpause Game:
 <%= link_to toggle_game_status_path, method: :post, class: "btn btn-default" do %>
