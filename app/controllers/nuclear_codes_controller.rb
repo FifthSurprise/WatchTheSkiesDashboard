@@ -4,14 +4,14 @@ class NuclearCodesController < ApplicationController
 
   def launched
     unless Game.first.nuclear_launch
-      redirect_to root_paths
+      redirect_to root_path, method: :get
     end
     @launch = NuclearCode.where("target is not null").where("target is not ''")[0]
     if @launch.nil?
       g = Game.first
       g.nuclear_launch = false
       g.save
-      redirect_to root_paths
+      redirect_to root_path, method: :get
     end
   end
 
