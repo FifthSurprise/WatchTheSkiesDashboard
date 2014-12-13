@@ -68,7 +68,7 @@ var app = angular.module('baseApp', [])
         $scope.time_til_next_round = data['time_til_next_round'];
         $scope.terror = data['terror']
         clock.setTime($scope.time_til_next_round );
-        if (data['game']['nuclear_launch'])
+        if (data['nuclear_launch'])
         {
           window.location = '/launched'
         }

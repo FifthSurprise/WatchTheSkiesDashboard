@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :launchstarts
+
   devise_for :admins
   get 'enter_launch_codes', to: 'nuclear_codes#enter_launch_codes', as: :enter_codes
   get '/launched', to: 'nuclear_codes#launched', as: :launched

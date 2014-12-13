@@ -11,9 +11,10 @@ class MainController < ApplicationController
     @terror = TerrorTracker.sum(:amount)
     @time_til_next_round = (@game.next_round - Time.now)*6
     p "Next round time is : #{@time_til_next_round}"
-
+    t =  Launchstart.first
     data = {}
     data[:game] = @game
+    data[:nuclear_launch] = t.value
     data[:next_round] = @next_round
     data[:time_til_next_round] = (@game.next_round - Time.now)
     data[:terror] = @terror

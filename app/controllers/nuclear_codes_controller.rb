@@ -3,13 +3,13 @@ class NuclearCodesController < ApplicationController
   before_action :authenticate_admin!
 
   def launched
-    unless Game.first.nuclear_launch
+    unless Launchstart.first.value
       redirect_to root_path, method: :get
     end
     @launch = NuclearCode.where("target is not null").where("target is not ''")[0]
     if @launch.nil?
-      g = Game.first
-      g.nuclear_launch = false
+      g = Launchstart.first
+      g.value = false
       g.save
       redirect_to root_path, method: :get
     end

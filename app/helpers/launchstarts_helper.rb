@@ -1,0 +1,2 @@
+module LaunchstartsHelper
+end
