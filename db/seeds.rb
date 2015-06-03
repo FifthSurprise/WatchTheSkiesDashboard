@@ -7,6 +7,10 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 Game.reset
 
+l = Launchstart.create()
+l.value = false
+l.save
+
 a = Admin.create()
 a.email = "wts@wts.com"
 a.password='swordfish'
