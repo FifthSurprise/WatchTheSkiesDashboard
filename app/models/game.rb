@@ -2,6 +2,8 @@ class Game < ActiveRecord::Base
   def self.reset
     Game.delete_all
     TerrorTracker.delete_all
+    PublicRelation.delete_all
+
     g = Game.create()
     g.control_message = "Welcome to Watch the Skies!"
     g.current_round = 0

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :public_relations
   resources :launchstarts
 
   devise_for :admins
