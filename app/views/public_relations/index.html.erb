@@ -1,9 +1,15 @@
 <h1>Listing public_relations</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th colspan="3"></th>
+      <th >Show</th>
+      <th >Edit</th>
+      <th >Destroy</th>
+      <th >Country</th>
+      <th >Round</th>
+      <th >Amount</th>
+      <th >Description</th>
     </tr>
   </thead>
 
@@ -13,6 +19,12 @@
         <td><%= link_to 'Show', public_relation %></td>
         <td><%= link_to 'Edit', edit_public_relation_path(public_relation) %></td>
         <td><%= link_to 'Destroy', public_relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= public_relation.country %></td>
+        <td><%= public_relation.round %></td>
+        <td><%= public_relation.pr_amount %></td>
+        <td><%= public_relation.description %></td>
+
+
       </tr>
     <% end %>
   </tbody>
