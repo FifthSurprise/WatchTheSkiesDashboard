@@ -16,11 +16,13 @@ class PublicRelationsController < ApplicationController
   def new
     @public_relation = PublicRelation.new
     @current_round = Game.first.current_round
+    @countries = countries
   end
 
   # GET /public_relations/1/edit
   def edit
     @current_round = @public_relation.round
+    @countries = countries
   end
 
   # POST /public_relations
@@ -72,5 +74,12 @@ class PublicRelationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def public_relation_params
       params[:public_relation].permit(:country, :description, :round, :pr_amount)
+    end
+
+    def countries
+
+      return [['USA' ,'USA'],['China','China'],['United Kingdom','United Kingdom'],
+      ['Russian Federation','Russian Federation'], ['Brazil','Brazil'],['France','France'],
+      ['Japan','Japan']]
     end
 end
