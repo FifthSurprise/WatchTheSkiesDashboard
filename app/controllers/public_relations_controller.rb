@@ -77,9 +77,8 @@ class PublicRelationsController < ApplicationController
     end
 
     def countries
-
-      return [['USA' ,'USA'],['China','China'],['United Kingdom','United Kingdom'],
-      ['Russian Federation','Russian Federation'], ['Brazil','Brazil'],['France','France'],
-      ['Japan','Japan']]
+      return [['Brazil','Brazil'],['China','China'],['France','France'], ['India','India'],
+      ['Japan','Japan'], ['Russian Federation','Russian Federation'],
+      ['United Kingdom','United Kingdom'],['USA' ,'USA'],['Germany','Germany']]
     end
 end
