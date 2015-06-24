@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :public_relations
+  get '/country_status/:country', to: 'public_relations#country_status', as: :country_pr_status
   resources :launchstarts
 
   devise_for :admins

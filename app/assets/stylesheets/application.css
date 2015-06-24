@@ -14,3 +14,7 @@
  *= require_self
  *= require flipclock.css
  */
+
+.mainContent{
+  padding:1%;
+}

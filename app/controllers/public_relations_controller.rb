@@ -4,7 +4,8 @@ class PublicRelationsController < ApplicationController
   # GET /public_relations
   # GET /public_relations.json
   def index
-    @public_relations = PublicRelation.all
+    @public_relations = PublicRelation.all.order(round: :asc, created_at: :asc)
+    @countries = countries.collect{|x|x[0]}
   end
 
   # GET /public_relations/1
@@ -63,6 +64,17 @@ class PublicRelationsController < ApplicationController
       format.html { redirect_to public_relations_url, notice: 'Public relation was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def country_status
+    @country = params[:country]
+    @countries = countries.collect{|x|x[0]}
+    if countries.any?{|x| x[0]==@country}
+      @public_relations = PublicRelation.order(round: :asc, created_at: :asc).where country: @country
+      @pr_amounts = PublicRelation.where(country: @country).group(:round).sum("pr_amount").sort_by{|round, pr_amount| round}
+    else
+      raise ActionController::RoutingError.new('Country Not Found')
+    end    
   end
 
   private

@@ -9,7 +9,7 @@
   <% end %>
 </div>
 
-<h2>Total PR Changes</h2>
+<h2>Listing Public Relations for <%= @country %></h2>
 <table class="table">
   <thead>
     <tr>
@@ -34,7 +34,25 @@
         <td><%= public_relation.pr_amount %></td>
         <td><%= public_relation.description %></td>
 
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
+<h1> PR Amounts by Round </h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th >Round</th>
+      <th >Total PR Change</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pr_amounts.each do |pr_amount| %>
+      <tr>
+        <td><%= pr_amount[0] %></td>
+        <td><%= pr_amount[1] %></td>
       </tr>
     <% end %>
   </tbody>
