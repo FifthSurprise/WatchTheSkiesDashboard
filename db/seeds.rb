@@ -13,6 +13,6 @@ l.save
 
 a = Admin.create()
 a.email = "wts@wts.com"
-a.password='swordfish'
-a.password_confirmation='swordfish'
+a.password='macbeth'
+a.password_confirmation='macbet'
 a.save
