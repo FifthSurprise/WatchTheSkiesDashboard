@@ -16,6 +16,9 @@ class PublicRelationsController < ApplicationController
   # GET /public_relations/new
   def new
     @public_relation = PublicRelation.new
+    if params[:country]
+      @public_relation.country = params[:country]
+    end
     @current_round = Game.first.current_round
     @countries = countries
   end

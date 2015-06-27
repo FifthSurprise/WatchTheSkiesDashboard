@@ -1,5 +1,6 @@
 <h1>Listing Public Relations</h1>
 
+<%= link_to 'New PR Entry', new_public_relation_path %>
 <h2>PR by Country</h2>
 <div class="btn-group" role="group">
   <% @countries.each do |country|%>
@@ -31,8 +32,6 @@
         <td><%= link_to public_relation.country, country_pr_status_path( public_relation.country) %></td>
         <td><%= public_relation.pr_amount %></td>
         <td><%= public_relation.description %></td>
-
-
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +39,3 @@
 
 <br>
 
-<%= link_to 'New PR Entry', new_public_relation_path %>
