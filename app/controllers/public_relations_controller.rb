@@ -4,7 +4,7 @@ class PublicRelationsController < ApplicationController
   # GET /public_relations
   # GET /public_relations.json
   def index
-    @public_relations = PublicRelation.all.order(round: :asc, created_at: :asc)
+    @public_relations = PublicRelation.all.order(round: :desc, created_at: :desc)
     @countries = countries.collect{|x|x[0]}
   end
 
@@ -70,7 +70,7 @@ class PublicRelationsController < ApplicationController
     @country = params[:country]
     @countries = countries.collect{|x|x[0]}
     if countries.any?{|x| x[0]==@country}
-      @public_relations = PublicRelation.order(round: :asc, created_at: :asc).where country: @country
+      @public_relations = PublicRelation.order(round: :desc, created_at: :desc).where country: @country
       @pr_amounts = PublicRelation.where(country: @country).group(:round).sum("pr_amount").sort_by{|round, pr_amount| round}
     else
       raise ActionController::RoutingError.new('Country Not Found')
