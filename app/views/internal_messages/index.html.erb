@@ -1,0 +1,28 @@
+<h1>Listing Internal Messages</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>Author</th>
+      <th>Time</th>
+      <th>Destroy</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @internal_messages.each do |internal_message| %>
+      <tr>
+        <td><%= internal_message.message %> </td>
+        <td><%= internal_message.author %> </td>
+        <td><%= internal_message.created_at %> </td>
+
+        <td><%= link_to 'Destroy', internal_message, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Internal Message Entry', new_internal_message_path %>
