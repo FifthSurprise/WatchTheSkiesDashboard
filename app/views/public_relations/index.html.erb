@@ -14,7 +14,7 @@
   <thead>
     <tr>
       <th >Round</th>
-      <th >Show</th>
+      <th >Details</th>
       <th >Edit</th>
       <th >Destroy</th>
       <th >Country</th>
@@ -27,7 +27,7 @@
     <% @public_relations.each do |public_relation| %>
       <tr>
         <td><%= public_relation.round %></td>
-        <td><%= link_to 'Show', public_relation %></td>
+        <td><%= link_to 'Details', public_relation %></td>
         <td><%= link_to 'Edit', edit_public_relation_path(public_relation) %></td>
         <td><%= link_to 'Destroy', public_relation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <td><%= link_to public_relation.country, country_pr_status_path( public_relation.country) %></td>
