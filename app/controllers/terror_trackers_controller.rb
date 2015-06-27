@@ -6,6 +6,7 @@ class TerrorTrackersController < ApplicationController
   # GET /terror_trackers.json
   def index
     @terror_trackers = TerrorTracker.all.order(created_at: :desc)
+    @tcount = TerrorTracker.sum(:amount)
   end
 
   # GET /terror_trackers/1
