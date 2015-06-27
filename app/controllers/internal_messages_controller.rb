@@ -4,13 +4,12 @@ class InternalMessagesController < ApplicationController
   # GET /internal_messages
   # GET /internal_messages.json
   def index
-    @internal_messages = InternalMessage.all
+    @internal_messages = InternalMessage.all().order(created_at: :desc)
   end
 
   # GET /internal_messages/1
   # GET /internal_messages/1.json
   def show
-    @internal_messages = InternalMessage.all().order(created_at: :asc)
   end
 
   # GET /internal_messages/new
