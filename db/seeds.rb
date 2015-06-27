@@ -14,5 +14,5 @@ l.save
 a = Admin.create()
 a.email = "wts@wts.com"
 a.password='macbeth'
-a.password_confirmation='macbet'
+a.password_confirmation='macbeth'
 a.save
